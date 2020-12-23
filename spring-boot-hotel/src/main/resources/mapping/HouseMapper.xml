@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+namespace:命名空间，其值为某一个Dao层类的具体路径
+ -->
+ <!-- 根据条件查询房间信息 -->
+<mapper namespace="cn.java.mapper.HouseMapper">
+<select id="getHouseInfoByCondition" parameterType="String" resultType="Map">
+SELECT rs.`id`,rs.`room_num`,rt.`room_type`,rt.`room_price`,rs.`room_status` FROM room_type rt 
+INNER JOIN rooms rs ON rt.`id`=rs.`room_type_id`
+
+<choose>
+<when test="arg0=='room_type'">
+WHERE rt.`room_type`=#{arg1}
+</when>
+<otherwise>
+WHERE rs.`room_status`=#{arg1}
+</otherwise>
+</choose>
+</select>
+</mapper>

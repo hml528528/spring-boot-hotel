@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.CheckInfoMapper" >
+<select id="getCheckInfos" resultType="map">
+<!--查询所有入住信息  -->
+SELECT 
+rs.`id`,rs.`room_num`,rt.`room_type`,rc.`checkout_status`,rc.`customer_name`,rc.`gender`,
+rc.`idcard`,rc.`phone_num`,rc.`deposit`,rc.`check_date`
+FROM room_type rt 
+INNER JOIN rooms rs 
+INNER JOIN room_check rc
+ON rt.`id`=rs.`room_type_id`
+AND rs.`id`=rc.`room_id`
+WHERE rc.`status`=1
+</select>
+<!--根据指定条件查询入住信息  -->
+<select id="getCheckInfosBycondition" resultType="map">
+SELECT 
+rs.`id`,rs.`room_num`,rt.`room_type`,rc.`customer_name`,rc.`gender`,
+rc.`idcard`,rc.`phone_num`,rc.`deposit`,rc.`check_date`
+FROM room_type rt 
+INNER JOIN rooms rs 
+INNER JOIN room_check rc
+ON rt.`id`=rs.`room_type_id`
+AND rs.`id`=rc.`room_id`
+<if test="arg0=='room_num'">
+WHERE rs.`room_num`=#{arg1} AND rc.`status`=1
+</if>
+<if test="arg0=='customer_name'">
+WHERE rc.`customer_name`=#{arg1} AND  rc.`status`=1
+</if>
+<if test="arg0=='phone_num'">
+WHERE rc.`phone_num`=#{arg1} AND  rc.`status`=1
+</if>
+<if test="arg0=='idcard'">
+WHERE rc.`idcard`=#{arg1} AND  rc.`status`=1
+</if>
+</select>
+</mapper>

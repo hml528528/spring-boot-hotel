@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.java.mapper.MenuMapper" >
+<!--对菜单进行描述  -->
+<resultMap type="cn.java.entity.OneMenu" id="Menus">
+<result property="id" javaType="Long" column="pid"/>
+<result property="oneName" javaType="String" column="oneName"/>
+<collection property="towMenusList" ofType="cn.java.entity.TowMenu">
+<result property="towName" javaType="String" column="towName"/>
+<result property="url" javaType="String" column="url"/>
+<result property="parentLimitId" javaType="Long" column="parent_limit_id"/>
+</collection>
+</resultMap>
+<!-- 获取sys_limit中的所有菜单 -->
+<!-- <select id="getMenus" resultMap="Menus">
+SELECT * FROM (SELECT id,limit_name AS oneName FROM sys_limit WHERE parent_limit_id=0) t1 
+INNER JOIN (SELECT limit_name AS towName,url,parent_limit_id  FROM sys_limit 
+WHERE parent_limit_id!=0) t2 ON t1.id=t2.parent_limit_id
+</select> -->
+<select id="getMenusByid"  resultMap="Menus" parameterType="Long">
+<!--SELECT t1.id,t1.limit_name AS oneName,t2.limit_name AS towName,t2.url,t2.parent_limit_id
+ FROM (SELECT su.id,sl.id AS pid,sl.limit_name FROM sys_user su 
+INNER JOIN user_limit ul  
+INNER JOIN sys_limit sl 
+ON ul.limit_id=sl.id AND ul.sys_id=su.id 
+WHERE su.id=#{0} AND sl.parent_limit_id=0) t1
+INNER JOIN (SELECT su.id,sl.id AS pid,sl.limit_name,sl.url,sl.parent_limit_id 
+FROM sys_user su 
+INNER JOIN user_limit ul  
+INNER JOIN sys_limit sl 
+ON ul.limit_id=sl.id AND ul.sys_id=su.id 
+WHERE su.id=#{0} AND sl.parent_limit_id!=0) t2
+ON t1.pid=t2.parent_limit_id  -->
+SELECT *
+FROM (SELECT su.id,sl.id AS pid,sl.limit_name AS oneName FROM sys_user su 
+INNER JOIN user_limit ul  
+INNER JOIN sys_limit sl 
+ON ul.limit_id=sl.id AND ul.sys_id=su.id 
+WHERE su.id=#{0} AND sl.parent_limit_id=0) t1
+INNER JOIN (SELECT  sl.limit_name AS towName,sl.url,sl.parent_limit_id 
+FROM sys_user su 
+INNER JOIN user_limit ul  
+INNER JOIN sys_limit sl 
+ON ul.limit_id=sl.id AND ul.sys_id=su.id 
+WHERE su.id=#{0} AND sl.parent_limit_id!=0) t2
+ON
+t1.pid=t2.parent_limit_id 
+</select>
+</mapper>
