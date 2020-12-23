@@ -1,0 +1,25 @@
+<!-- 
+  父组件使用自定义组件，并完成父组件向子组件传递参数
+  通过属性绑定：tabs
+ -->
+ <!-- 
+  实现tabs组件的切换
+  通过事件绑定：bindsendIndex
+ -->
+ <tabs tabs="{{titles}}" bindsendIndex="getIndex"></tabs>
+ <!-- 
+   wx:if：页面渲染，当条件为真时，显示页面
+  -->
+  <!--定义推荐组件 -->
+<view wx:if="{{index==0}}">
+    <recommend></recommend>
+</view>
+<!-- 定义分类组件 -->
+<view wx:if="{{index==1}}">
+  <categroys></categroys>
+</view>
+<view wx:if="{{index==2}}">最新</view>
+<view wx:if="{{index==3}}">
+<!-- 引入album组件 -->
+<album></album>
+</view>

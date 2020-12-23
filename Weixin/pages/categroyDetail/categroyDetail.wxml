@@ -1,0 +1,12 @@
+<!-- 引用tabs选项卡 -->
+<tabs tabs="{{titles}}" bindsendIndex="getIndex"></tabs>
+<!-- 
+  分类详情
+   enable-flex：启用 flexbox 布局
+   bindscrolltolower：触底事件
+ -->
+<scroll-view class="list" scroll-y bindscrolltolower="scrolltolower" enable-flex>
+  <navigator url="{{'/pages/downloads/downloads?src='+basePath+item.thumb}}" class="list_item" wx:for="{{list}}" wx:key="_id">
+    <image src="{{basePath+item.thumb}}" class="my_img" mode="aspectFill"></image>
+  </navigator>
+</scroll-view>

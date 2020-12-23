@@ -1,0 +1,6 @@
+<view>
+  <view>
+    <image src="{{url}}"></image>
+  </view>
+  <button bindtap="downloadPic">下载图片</button>
+</view>

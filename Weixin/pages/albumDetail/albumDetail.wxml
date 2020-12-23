@@ -1,0 +1,26 @@
+<view wx:if="{{data.user}}">
+  <!--轮播图部分-->
+  <view class="container">
+    <!--轮播图组件-->
+    <swiper class="swiper_view" autoplay circular indicator-dots>
+      <swiper-item wx:for="{{data.imgs}}" wx:key="*this">
+        <image mode="aspectFill" class="my_img" src="{{basePath+item}}"></image>
+      </swiper-item>
+    </swiper>
+    <!--标题部分-->
+    <view class="title">{{data.name}}</view>
+  </view>
+  <!--用户部分-->
+  <view class="user">
+    <!--用户头像-->
+    <image class="user_img" src="{{basePath+data.user.avatar}}"></image>
+    <!--用户名称-->
+    <view>{{data.user.name}}</view>
+  </view>
+</view>
+<!--图片列表-->
+<view class="list_view">
+  <navigator url="{{'/pages/downloads/downloads?src='+basePath+item.thumb}}" class="list_item" wx:for="{{list}}" wx:key="_id">
+    <image mode="aspectFill" class="my_img" src="{{basePath+item.thumb}}"></image>
+  </navigator>
+</view>

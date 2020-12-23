@@ -1,0 +1,34 @@
+<!-- 
+  推荐组件
+  1.scroll-view：可滚动视图区域
+  2.需要给scroll-view一个固定高度
+  3.scroll-y:允许纵向滚动
+  4.bindscrolltoupper:滚动到底部时触发	
+ -->
+ <scroll-view class="container" scroll-y="true" bindscrolltolower="crolltolower">
+     <!-- 精美图片 -->
+ <view class="cover">
+     <navigator url="{{'/pages/downloads/downloads?src='+basePath+item.thumb}}" class="cover_view" wx:for="{{localData}}" wx:key="_id">
+         <image src="{{basePath+item.thumb}}" mode="widthFix"></image>
+     </navigator>
+ </view>
+ <!-- 日期 -->
+ <view class="data">
+         <view class="time">{{date}}</view>
+         <view class="title">{{title}}</view>
+         <view class="more">更多></view>
+</view>
+<!-- 图片 -->
+<view class="pics">
+    <navigator  url="{{'/pages/downloads/downloads?src='+basePath+item.thumb}}" class="pics_view"  wx:for="{{list}}" wx:key="_id">
+        <image src="{{basePath+item.thumb}}" mode="aspectFill"></image>
+    </navigator>
+ </view>
+ <!-- 热门图片 -->
+ <view class="txt">热门</view>
+ <view class="pics">
+    <navigator  url="{{'/pages/downloads/downloads?src='+basePath+item.thumb}}" class="pics_view"  wx:for="{{hotData}}" wx:key="_id">
+        <image src="{{basePath+item.thumb}}" mode="aspectFill"></image>
+    </navigator>
+ </view>
+</scroll-view>

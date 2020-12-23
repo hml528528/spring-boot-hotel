@@ -1,0 +1,13 @@
+/*分类详情图片 */
+.list{
+  height: calc(100vh - 70rpx);
+  display: flex;
+  flex-wrap: wrap;
+}
+.list_item{
+  width: 33.33%;
+  border: 3px solid #fff;
+}
+.my_img{
+  width: 100%;
+}

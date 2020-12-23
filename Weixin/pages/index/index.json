@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "tabs":"/components/tabs/tabs",
+    "recommend":"/components/recommend/recommend",
+    "categroys":"/components/categroys/categroys",
+    "album":"/components/album/album"
+  }
+}

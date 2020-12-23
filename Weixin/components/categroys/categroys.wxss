@@ -1,0 +1,27 @@
+.category_view {
+  display: flex;
+  /*设置flex布局换行*/
+  flex-wrap: wrap;
+}
+.category_item {
+  width: 33.33%;
+  height: 248rpx;
+  border: 3px solid #fff;
+  /*子绝父相 */
+  position: relative;
+}
+.my_img {
+  width: 100%;
+  height: 100%;
+}
+.txt {
+  /*绝对定位*/
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10rpx;
+  /* 背景半透明 */
+  background-color: rgba(0,0,0,.4);
+  color:#fff;
+}

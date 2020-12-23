@@ -1,0 +1,14 @@
+.container{
+   display: flex;
+  justify-content: space-between;
+  padding: 0 100rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.tabs{
+ font-weight: bolder;
+}
+.active{
+  color: hotpink;
+  border-bottom: 2px solid hotpink;
+}

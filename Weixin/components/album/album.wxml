@@ -1,0 +1,17 @@
+<!--专辑列表-->
+<scroll-view scroll-y enable-flex class="album" bindscrolltolower="scrolltolower">
+   <view class="album_item" wx:for="{{albumData}}" wx:key="_id"  bindtap="click" data-index="{{index}}">
+      <!--封面大图-->
+      <image class="my_img" mode="aspectFill" src="{{basePath+item.cover}}"></image>
+      <!--专辑介绍-->
+      <view class="txt">
+        <view>{{item.name}}</view>
+        <view>共{{item.count}}张</view>
+      </view>
+      <!--三张小图片-->
+      <view class="imgs">
+        <!--使用 wx:for-item 可以指定数组当前元素的变量名;指定什么用什么-->
+        <image class="pic" wx:for="{{item.imgs}}" wx:key="*this" wx:for-item="pic" src="{{basePath+pic}}"></image>
+      </view>
+   </view>
+</scroll-view>

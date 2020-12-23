@@ -1,0 +1,8 @@
+<!-- 
+  自定义组件
+  bindtap="click"：事件绑定
+  data-index="{{index}}"：数据绑定，将当前的索引传递给事件对象
+ -->
+<view class="container">
+  <view  wx:for="{{tabs}}" wx:key="id" bindtap="click" data-index="{{index}}" class="{{index==currentIndex?'tabs active':'tabs'}}">{{item.text}}</view>
+</view>

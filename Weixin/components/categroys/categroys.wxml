@@ -1,0 +1,9 @@
+<!--分类列表结构-->
+<view class="category_view">
+   <navigator url="{{'/pages/categroyDetail/categroyDetail?id='+item.id}}" class="category_item" wx:for="{{list}}" wx:key="_id">
+     <!--图片-->
+     <image mode="aspectFill" class="my_img" src="{{basePath+item.cover}}"></image>
+     <!--标题-->
+     <view class="txt">{{item.name}}</view>
+   </navigator>
+</view>

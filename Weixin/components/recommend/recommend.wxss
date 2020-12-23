@@ -1,0 +1,49 @@
+/* 精美图片 */
+/* 
+  调用cacl的方法计算视口高度，-必须空格，否则无效
+*/
+.container{
+  width: 100vw;
+  height: calc(100vh - 60px);
+}
+.cover{
+  /* 开启flex布局 */
+   display: flex;
+   /* 自动换行 */
+   flex-wrap: wrap;
+}
+.cover_view{
+  width: 50%;
+  border: 3px solid #fff;
+}
+image{
+  width: 100%;
+}
+.data{
+    /* 开启flex布局 */
+    display: flex;
+    justify-content: space-between; 
+    padding:20rpx 10rpx ;
+    font-weight: bolder;
+}
+.time,.more{
+  color: hotpink;
+}
+.pics{
+     /* 开启flex布局 */
+      display: flex;
+      /* 允许换行 */
+      flex-wrap: wrap;
+}
+.pics_view{
+  width: 33.33%;
+  border: 3px solid #fff;
+}
+.txt{
+  color: hotpink;
+  padding: 2rpx 15rpx;
+  margin:10rpx;
+  font-weight: bolder;
+  border-left: 3px solid hotpink;
+}
+
